@@ -2,9 +2,8 @@ import requests
 import time
 import random
 from bs4 import BeautifulSoup
-import os
-
-os.system("")
+from colorama import Fore
+from colorama import Style
 
 number = random.choice(range(2, 148))
 if number < 10:
@@ -21,15 +20,13 @@ for section in contents:
     text.append(section.text)
 text = " ".join(text)
 
-print(f'\033[94m{text}\033[0m')
+print(f"{Fore.LIGHTBLUE_EX}{text}{Style.RESET_ALL}")
 
 start_time = time.time()
 
-user_text = input("\033[1m[Type:]->\033[0m")
+user_text = input(f"{Style.BRIGHT}[Type:]->{Style.RESET_ALL}")
 
 total_time = time.time() - start_time
-
-print(f"\033[93mTime spent (seconds): \033[1m{round(total_time)}\033[0m")
 
 wrong_count = 0
 for i in range(len(user_text.split(" "))):
@@ -41,9 +38,11 @@ for i in range(len(user_text.split(" "))):
 
 accuracy = (len(user_text.split(" "))-wrong_count)/len(user_text.split(" ")) * 100
 
-print(f"\033[93mAccuracy (%): \033[1m{round(accuracy)}\033[0m")
-print(f"\033[93mWords per minute (wpm): \033[1m{round(len(user_text.split(' '))/total_time * 60)}\033[0m")
-print(f"\033[93mFable: \033[1m{soup.find('h1').text}\033[0m")
+print(f"{Fore.YELLOW}Time spent (seconds): {Style.BRIGHT}{round(total_time)}{Style.RESET_ALL}")
+print(f"{Fore.YELLOW}Accuracy (%): {Style.BRIGHT}{round(accuracy)}{Style.RESET_ALL}")
+print(f"{Fore.YELLOW}Words per minute (wpm): {Style.BRIGHT}{round(len(user_text.split(' '))/total_time * 60)}\
+        {Style.RESET_ALL}")
+print(f"{Fore.YELLOW}Fable: {Style.BRIGHT}{soup.find('h1').text}{Style.RESET_ALL}")
 
 
 
