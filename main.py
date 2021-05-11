@@ -39,10 +39,12 @@ for i in range(len(user_text.split(" "))):
 accuracy = (len(user_text.split(" "))-wrong_count)/len(user_text.split(" ")) * 100
 
 print(f"{Fore.YELLOW}Time spent (seconds): {Style.BRIGHT}{round(total_time)}{Style.RESET_ALL}")
-print(f"{Fore.YELLOW}Accuracy (%): {Style.BRIGHT}{round(accuracy)}{Style.RESET_ALL}")
-print(f"{Fore.YELLOW}Words per minute (wpm): {Style.BRIGHT}{round(len(user_text.split(' '))/total_time * 60)}\
+print(f"{Fore.YELLOW}Accuracy* (%): {Style.BRIGHT}{round(accuracy)}{Style.RESET_ALL}")
+print(f"{Fore.YELLOW}Words per minute** (wpm): {Style.BRIGHT}{round(len(user_text.split(' '))/total_time * 60)}\
         {Style.RESET_ALL}")
 print(f"{Fore.YELLOW}Fable: {Style.BRIGHT}{soup.find('h1').text}{Style.RESET_ALL}")
+print(f"{Fore.RED}*Note that missing a word or adding an extra word will result in all following words "
+      f"being marked wrong\n**Note that the timer starts immediately after the text is printed{Style.RESET_ALL}")
 
 
 
